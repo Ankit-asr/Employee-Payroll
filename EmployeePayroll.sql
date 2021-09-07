@@ -18,3 +18,11 @@ select * from employee_payroll
 --UC5 Selective Data Retrieval
 select * from employee_payroll where Name='Ankit'
 select Salary from employee_payroll where startDate BETWEEN Cast('2021-03-20' as Date) and GetDate();
+--UC6 Add Gender to Employee
+Alter table employee_payroll
+add Gender char(1)
+Update employee_payroll 
+set Gender='M' where name='Ankit' or name='Karan'
+Update employee_payroll 
+set Gender='F' where name='Riya'
+select * from employee_payroll
