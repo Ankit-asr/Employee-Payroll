@@ -26,3 +26,22 @@ set Gender='M' where name='Ankit' or name='Karan'
 Update employee_payroll 
 set Gender='F' where name='Riya'
 select * from employee_payroll
+
+--UC7 Find Sum ,Average , Minimum and Maximum Salary
+Alter Table employee_payroll
+Alter Column Salary money
+
+Select SUM(Salary) from employee_payroll Where Gender='M' Group by Gender
+Select SUM(Salary) from employee_payroll Where Gender='F' Group by Gender
+
+Select AVG(Salary) from employee_payroll Where Gender='M' Group by Gender
+Select AVG(Salary) from employee_payroll Where Gender='F' Group by Gender
+
+Select MAX(Salary) from employee_payroll Where Gender='M' Group BY Gender
+Select MAX(Salary) from employee_payroll Where Gender='F' Group BY Gender
+
+Select MIN(Salary) from employee_payroll Where Gender='M' Group BY Gender
+Select MIN(Salary) from employee_payroll Where Gender='F' Group BY Gender
+
+Select COUNT(Salary) from employee_payroll Where Gender='M' Group BY Gender
+Select COUNT(Salary) from employee_payroll Where Gender='F' Group BY Gender
