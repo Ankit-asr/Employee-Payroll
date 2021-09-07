@@ -13,3 +13,8 @@ StartDate varchar(20)
 insert into employee_payroll (Name,Salary,StartDate)values ('Ankit','50000','26-08-2021')
 insert into employee_payroll (Name,Salary,StartDate)values ('Karan','30000','26-08-2021')
 insert into employee_payroll (Name,Salary,StartDate)values ('Riya','45000','26-08-2021')
+--UC4 Retrieve Data
+select * from employee_payroll
+--UC5 Selective Data Retrieval
+select * from employee_payroll where Name='Ankit'
+select Salary from employee_payroll where startDate BETWEEN Cast('2021-03-20' as Date) and GetDate();
