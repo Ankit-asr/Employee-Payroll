@@ -61,3 +61,13 @@ add Address varchar(200) not null default 'Not Value Added';
 Alter table employee_payroll
 add BasicPay float,Deduction float,TaxablePay float, IncomeTax float,NetPay float;
 Select * from employee_payroll
+
+--UC10 Add Terissa row
+
+INSERT INTO employee_payroll(Name,StartDate,Gender,EmployeeDepartment,Address,EmployeePhoneNumber,BasicPay,Deduction,TaxablePay,IncomeTax,NetPay)
+VALUES('Terissa','2021-05-20','F','Computer','Bihar,IN','7834562345',40000,5000,0,0,35000)
+
+INSERT INTO employee_payroll(Name,StartDate,Gender,EmployeeDepartment,Address,EmployeePhoneNumber,BasicPay,Deduction,TaxablePay,IncomeTax,NetPay)
+VALUES('Terissa','2021-06-20','F','Files','Maharashtra,IN','8764536278',50000,5000,0,0,45000)
+
+SELECT *FROM employee_payroll WHERE Name='Terissa';
