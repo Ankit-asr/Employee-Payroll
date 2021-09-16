@@ -71,3 +71,78 @@ INSERT INTO employee_payroll(Name,StartDate,Gender,EmployeeDepartment,Address,Em
 VALUES('Terissa','2021-06-20','F','Files','Maharashtra,IN','8764536278',50000,5000,0,0,45000)
 
 SELECT *FROM employee_payroll WHERE Name='Terissa';
+
+--UC 11: Implement the ER Diagram into Payroll Service Database
+--Create Table for Company
+Create Table Company(
+CompanyID int identity(1,1) primary key,
+CompanyName varchar(100)
+)
+Insert into Company Values('GrandBlue'),('ShowTime')
+Insert into Company Values('Gorm'),('Stellar')
+Select * from Company
+
+drop table employee_payroll
+drop table Employee
+
+create table Employee
+(EmployeeID int identity(1,1) primary key,
+CompanyIdentity int,
+EmployeeName varchar(200),
+EmployeePhoneNumber bigInt,
+EmployeeAddress varchar(200),
+StartDate date,
+Gender char,
+Foreign key (CompanyIdentity) references Company(CompanyID)
+)
+
+Select * from Employee
+
+--Create Payroll Table
+create table PayrollCalculate
+(BasicPay float,
+Deductions float,
+TaxablePay float,
+IncomeTax float,
+NetPay float,
+EmployeeIdentity int identity(1,1) primary key,
+Foreign key (EmployeeIdentity) references Employee(EmployeeID)
+)
+
+--Insert Values in Payroll Table
+Insert into PayrollCalculate values(40000,4000,2000,1000,37000)
+Insert into PayrollCalculate values(50000,4000,2000,1000,43000)
+Insert into PayrollCalculate values(40000,4000,2000,1000,33000)
+Insert into PayrollCalculate values(60000,4000,2000,1000,53000)
+select * from PayrollCalculate
+
+--Create Department Table
+create table Department
+(
+DepartmentId int identity(1,1) primary key,
+DepartName varchar(100)
+)
+
+--Insert Values in Department Table
+insert into Department values
+('Marketing'),
+('Sales'),
+('Publishing')
+Select * from Department
+
+--Create table EmployeeDepartment
+create table EmployeeDepartment
+(
+DepartmentIdentity int ,
+EmployeeIdentity int,
+Foreign key (EmployeeIdentity) references Employee(EmployeeID),
+Foreign key (DepartmentIdentity) references Department(DepartmentID)
+)
+
+--Insert Values in EmployeeDepartment
+insert into EmployeeDepartment values
+(3,1),
+(2,2),
+(1,3),
+(3,4)
+select * from EmployeeDepartment
